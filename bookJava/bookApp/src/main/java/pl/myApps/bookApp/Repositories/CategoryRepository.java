@@ -13,6 +13,7 @@ public class CategoryRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
     public List<Category> getAllCategories() {
         String sql = "SELECT * FROM category";
         return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Category.class));
@@ -23,9 +24,19 @@ public class CategoryRepository {
         return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Category.class), id);
     }
 
-    public int addCategories(List <Category> categories) {
+    public int addCategories(List<Category> categories) {
         String sql = "INSERT INTO category (name) VALUES (?)";
-        categories.forEach(book -> jdbcTemplate.update(sql, book.getName()));
+        categories.forEach(category -> jdbcTemplate.update(sql, category.getName()));
         return 1;
+    }
+
+    public int updateCategory(int id, Category category) {
+        String sql = "UPDATE category SET name = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, category.getName(), id);
+    }
+
+    public int deleteCategory(int id) {
+        String sql = "DELETE FROM category WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
     }
 }

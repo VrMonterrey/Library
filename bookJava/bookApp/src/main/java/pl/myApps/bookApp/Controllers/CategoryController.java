@@ -15,17 +15,27 @@ public class CategoryController {
     private CategoryRepository categoryRepository;
 
     @GetMapping()
-    public List<Category> getAllAuthors() {
+    public List<Category> getAllCategories() {
         return categoryRepository.getAllCategories();
     }
 
     @GetMapping("/{id}")
-    public Category getAuthorsById(@PathVariable("id") int id) {
+    public Category getCategoryById(@PathVariable("id") int id) {
         return categoryRepository.getCategoryById(id);
     }
 
     @PostMapping()
-    public int addAuthors(@RequestBody List<Category> categories) {
+    public int addCategories(@RequestBody List<Category> categories) {
         return categoryRepository.addCategories(categories);
+    }
+
+    @PutMapping("/{id}")
+    public int updateCategory(@PathVariable("id") int id, @RequestBody Category category) {
+        return categoryRepository.updateCategory(id, category);
+    }
+
+    @DeleteMapping("/{id}")
+    public int deleteCategory(@PathVariable("id") int id) {
+        return categoryRepository.deleteCategory(id);
     }
 }

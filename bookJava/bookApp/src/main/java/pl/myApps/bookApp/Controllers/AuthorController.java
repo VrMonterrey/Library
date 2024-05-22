@@ -28,4 +28,14 @@ public class AuthorController {
     public int addAuthors(@RequestBody List<Author> authors) {
         return authorRepository.addAuthors(authors);
     }
+
+    @PutMapping("/{id}")
+    public int updateAuthor(@PathVariable("id") int id, @RequestBody Author author) {
+        return authorRepository.updateAuthor(id, author);
+    }
+
+    @DeleteMapping("/{id}")
+    public int deleteAuthor(@PathVariable("id") int id) {
+        return authorRepository.deleteAuthor(id);
+    }
 }

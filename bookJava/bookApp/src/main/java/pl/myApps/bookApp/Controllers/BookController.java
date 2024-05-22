@@ -28,4 +28,14 @@ public class BookController {
     public int addBooks(@RequestBody List<Book> books) {
         return bookRepository.addBooks(books);
     }
+
+    @PutMapping("/{id}")
+    public int updateBook(@PathVariable("id") int id, @RequestBody Book book) {
+        return bookRepository.updateBook(id, book);
+    }
+
+    @DeleteMapping("/{id}")
+    public int deleteBook(@PathVariable("id") int id) {
+        return bookRepository.deleteBook(id);
+    }
 }
