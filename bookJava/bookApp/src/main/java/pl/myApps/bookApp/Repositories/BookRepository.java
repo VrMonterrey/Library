@@ -32,10 +32,12 @@ public class BookRepository {
         return 1;
     }
 
-    public int updateBook(int id, Book book) {
+    public Book updateBook(int id, Book book) {
         String sql = "UPDATE book SET title = ?, author = ?, category = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), book.getCategory(), id);
+        jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), book.getCategory(), id);
+        return getBookById(id);
     }
+
 
     public int deleteBook(int id) {
         String sql = "DELETE FROM book WHERE id = ?";

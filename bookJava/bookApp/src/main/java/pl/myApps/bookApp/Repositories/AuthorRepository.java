@@ -30,9 +30,10 @@ public class AuthorRepository {
         return 1;
     }
 
-    public int updateAuthor(int id, Author author) {
+    public Author updateAuthor(int id, Author author) {
         String sql = "UPDATE author SET first_name = ?, last_name = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, author.getFirst_name(), author.getLast_name(), id);
+        jdbcTemplate.update(sql, author.getFirst_name(), author.getLast_name(), id);
+        return getAuthorById(id);
     }
 
     public int deleteAuthor(int id) {

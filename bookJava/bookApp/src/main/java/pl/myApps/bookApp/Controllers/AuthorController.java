@@ -30,7 +30,7 @@ public class AuthorController {
     }
 
     @PutMapping("/{id}")
-    public int updateAuthor(@PathVariable("id") int id, @RequestBody Author author) {
+    public Author updateAuthor(@PathVariable("id") int id, @RequestBody Author author) {
         return authorRepository.updateAuthor(id, author);
     }
 

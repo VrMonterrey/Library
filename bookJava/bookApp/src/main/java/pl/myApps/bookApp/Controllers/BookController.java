@@ -30,7 +30,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public int updateBook(@PathVariable("id") int id, @RequestBody Book book) {
+    public Book updateBook(@PathVariable("id") int id, @RequestBody Book book) {
         return bookRepository.updateBook(id, book);
     }
 

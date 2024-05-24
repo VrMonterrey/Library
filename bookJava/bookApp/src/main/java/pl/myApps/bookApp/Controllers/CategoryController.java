@@ -30,7 +30,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public int updateCategory(@PathVariable("id") int id, @RequestBody Category category) {
+    public Category updateCategory(@PathVariable("id") int id, @RequestBody Category category) {
         return categoryRepository.updateCategory(id, category);
     }
 

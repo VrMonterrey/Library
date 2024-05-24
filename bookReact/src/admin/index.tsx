@@ -7,9 +7,11 @@ import {
   EditGuesser,
 } from "react-admin";
 import simpleRestProvider from "ra-data-simple-rest";
-import { AuthorCreate } from "../components/authorCreate";
-import { BookCreate } from "../components/bookCreate";
-import { CategoryCreate } from "../components/categoryCreate";
+import { AuthorCreate } from "../components/create/authorCreate";
+import { BookCreate } from "../components/create/bookCreate";
+import { CategoryCreate } from "../components/create/categoryCreate";
+import { BookList } from "../components/ lists/bookList";
+import { BookEdit } from "../components/edit/bookEdit";
 
 const dataProvider = simpleRestProvider(
   import.meta.env.VITE_API_URL,
@@ -21,9 +23,9 @@ const App = () => (
   <Admin dataProvider={dataProvider}>
     <Resource
       name="books"
-      list={ListGuesser}
+      list={BookList}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={BookEdit}
       create={BookCreate}
     />
     <Resource

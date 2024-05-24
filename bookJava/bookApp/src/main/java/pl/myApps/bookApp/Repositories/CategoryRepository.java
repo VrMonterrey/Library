@@ -30,9 +30,10 @@ public class CategoryRepository {
         return 1;
     }
 
-    public int updateCategory(int id, Category category) {
+    public Category updateCategory(int id, Category category) {
         String sql = "UPDATE category SET name = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, category.getName(), id);
+        jdbcTemplate.update(sql, category.getName(), id);
+        return getCategoryById(id);
     }
 
     public int deleteCategory(int id) {
